@@ -24,7 +24,7 @@ uint16_t ADS7828::_readData(uint8_t channel, bool single) {
   // force channel into 3 bits in case channel is out of range
   channel = channel & 0x7;
   uint8_t csel = (channel >> 1) | ((channel & 0x1) << 2);
-  cmd = cmd | csel << 4 | IREF_OFF_AD_ON;
+  cmd = cmd | csel << 4 | IREF_ON_AD_ON;
   _wire->beginTransmission(_i2caddr);
   _wire->write(cmd);
   _wire->endTransmission();
